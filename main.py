@@ -104,7 +104,7 @@ def load_data():
 def main():
     # Header
     st.markdown(
-        '<h1 class="main-header">🎵 Music League Analytics</h1>',
+        '<h1 class="main-header">🎵 Lo Fi PeepsMusic League Analytics</h1>',
         unsafe_allow_html=True
     )
 
