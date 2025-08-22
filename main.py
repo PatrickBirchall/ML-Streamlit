@@ -115,13 +115,6 @@ def main():
         st.error("Failed to load data. Please check your CSV files.")
         return
 
-    # Debug: Print column names to help identify issues
-    if st.checkbox("Debug: Show column names"):
-        st.write("**votes_with_voters columns:**", list(votes_with_voters.columns))
-        st.write("**submissions_with_rounds columns:**", list(submissions_with_rounds.columns))
-        st.write("**filtered_votes columns:**", list(votes_with_voters.columns))
-        st.write("**filtered_submissions columns:**", list(submissions_with_rounds.columns))
-
     # Sidebar filters
     st.sidebar.header("📊 Filters")
 
@@ -562,22 +555,12 @@ def main():
                 # Voter participation
                 voter_participation = round_votes.groupby('Voter ID').size().reset_index(name='Votes_Cast')
                 
-                # Debug: Check voter participation columns
-                if st.checkbox("Debug: Show voter participation columns"):
-                    st.write("**voter_participation before merge:**", list(voter_participation.columns))
-                    st.write("**competitors columns:**", list(competitors.columns))
-                
                 voter_participation = voter_participation.merge(
                     competitors[['ID', 'Name']],
                     left_on='Voter ID',
                     right_on='ID',
                     how='left'
                 )
-                
-                # Debug: Check after merge
-                if st.checkbox("Debug: Show merged voter participation"):
-                    st.write("**voter_participation after merge:**", list(voter_participation.columns))
-                    st.write("**voter_participation head:**", voter_participation.head())
 
                 fig = px.bar(
                     voter_participation,
