@@ -1,0 +1,40 @@
+[flake8]
+# Maximum line length
+max-line-length = 100
+
+# Ignore specific error codes
+ignore = 
+    # E203 - whitespace before ':' (conflicts with black)
+    E203,
+    # W503 - line break before binary operator (conflicts with black)
+    W503,
+    # E501 - line too long (we'll handle this with max-line-length)
+    E501,
+    # E302 - expected 2 blank lines (relaxed for this project)
+    E302,
+    # E303 - too many blank lines
+    E303
+
+# Exclude directories and files
+exclude = 
+    .git,
+    __pycache__,
+    .venv,
+    venv,
+    env,
+    .env,
+    build,
+    dist,
+    *.egg-info
+
+# Show source code for each error
+show-source = True
+
+# Show statistics
+statistics = True
+
+# Count errors
+count = True
+
+# Output format
+format = %(path)s:%(row)d:%(col)d: %(code)s %(text)s
